@@ -22,14 +22,13 @@
     "eslint-plugin-svelte3": "^3.2.1",
     "svelte": "^3.44.0",
     "svelte-check": "^2.2.6",
-    "svelte-fa": "^2.4.0",
     "svelte-preprocess": "^4.10.1",
     "tslib": "^2.3.1",
     "typescript": "~4.6.2"
   },
   "type": "module",
   "dependencies": {
-    "@fortawesome/free-solid-svg-icons": "^6.1.1",
-    "json-server": "^0.17.0"
+    "json-server": "^0.17.0",
+    "svelte-icons": "^2.1.0"
   }
 }
