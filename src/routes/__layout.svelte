@@ -8,7 +8,9 @@
   onMount(() => (ready = true))
 </script>
 
-<div class="container">
-  <slot />
-  <Footer />
-</div>
+{#if ready}
+  <div class="container">
+    <slot />
+    <Footer />
+  </div>
+{/if}

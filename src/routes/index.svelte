@@ -14,6 +14,7 @@
 </script>
 
 <script lang="ts">
+  import { fade, scale } from 'svelte/transition'
   import Header from '$components/Header.svelte'
   import AddTask from '$components/AddTask.svelte'
   import Tasks from '$components/Tasks.svelte'
@@ -102,7 +103,7 @@
 {#if tasks.length === 0}
   <h3>No Tasks To Show.</h3>
 {:else}
-  <div>
+  <div in:scale out:fade={{ duration: 300 }}>
     <Tasks {tasks} onDelete={deleteTask} onToggle={toggleReminder} />
   </div>
 {/if}
