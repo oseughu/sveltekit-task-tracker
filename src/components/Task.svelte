@@ -1,6 +1,7 @@
 <script lang="ts">
   import Fa from 'svelte-fa'
-  import { faTimes } from '@fortawesome/free-solid-svg-icons'
+  import pkg from '@fortawesome/free-solid-svg-icons'
+  const { faTimes } = pkg
 
   export let task: any
   export let onDelete: any
