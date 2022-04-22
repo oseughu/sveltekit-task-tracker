@@ -1,0 +1,101 @@
+<script context="module">
+  export async function load() {
+    try {
+      const tasksFromServer = await fetch('http://localhost:5000/tasks').then(
+        res => res.json()
+      )
+      return {
+        props: { tasks: tasksFromServer }
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+</script>
+
+<script lang="ts">
+  import Header from '$components/Header.svelte'
+  import AddTask from '$components/AddTask.svelte'
+  import Tasks from '$components/Tasks.svelte'
+
+  export let tasks: any[]
+  let showAddTask: boolean = false
+
+  // Fetch Task
+  const fetchTask = async (id: number) => {
+    const res = await fetch(`http://localhost:5000/tasks/${id}`)
+    const data = await res.json()
+
+    return data
+  }
+
+  // Add Task
+  const addTask = async (task: any) => {
+    const res = await fetch('http://localhost:5000/tasks', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(task)
+    })
+
+    const data = await res.json()
+
+    tasks = [...tasks, data]
+  }
+
+  // Delete Task
+  const deleteTask = async (id: number) => {
+    await fetch(`http://localhost:5000/tasks/${id}`, {
+      method: 'DELETE'
+    })
+
+    const newTasks = [...tasks]
+
+    newTasks.splice(tasks.indexOf(id), 1)
+
+    tasks = newTasks
+  }
+
+  // Toggle Reminder
+  const toggleReminder = async (id: number) => {
+    const taskToToggle = await fetchTask(id)
+    const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder }
+
+    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(updTask)
+    })
+
+    const data = await res.json()
+
+    tasks = tasks.map(task =>
+      task.id === id ? { ...task, reminder: data.reminder } : task
+    )
+  }
+</script>
+
+<svelte:head>
+  <title>Task Tracker</title>
+</svelte:head>
+
+<Header onAdd="{() => (showAddTask = !showAddTask)}" showAdd="{showAddTask}" />
+
+{#if showAddTask}
+  <AddTask onAdd="{addTask}" />
+{/if}
+
+{#if tasks.length === 0}
+  <h3>No Tasks To Show.</h3>
+{:else}
+  <div>
+    <Tasks
+      tasks="{tasks}"
+      onDelete="{deleteTask}"
+      onToggle="{toggleReminder}"
+    />
+  </div>
+{/if}
