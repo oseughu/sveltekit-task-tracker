@@ -19,18 +19,18 @@
   }
 </script>
 
-<form on:submit|preventDefault="{handleSubmit}" class="add-form">
+<form on:submit|preventDefault={handleSubmit} class="add-form">
   <div class="form-control">
     <label for="text">Task</label>
-    <input type="text" placeholder="Add Task" bind:value="{text}" />
+    <input type="text" placeholder="Add Task" bind:value={text} />
   </div>
   <div class="form-control">
     <label for="day">Day & Time</label>
-    <input type="text" placeholder="Add Day & Time" bind:value="{day}" />
+    <input type="text" placeholder="Add Day & Time" bind:value={day} />
   </div>
   <div class="form-control form-control-check">
     <label for="reminder">Set Reminder</label>
-    <input type="checkbox" bind:checked="{reminder}" />
+    <input type="checkbox" bind:checked={reminder} />
   </div>
 
   <input type="submit" value="Save Task" class="btn btn-block" />

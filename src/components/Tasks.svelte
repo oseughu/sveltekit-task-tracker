@@ -6,5 +6,5 @@
 </script>
 
 {#each tasks as task (task.id)}
-  <Task task="{task}" onDelete="{onDelete}" onToggle="{onToggle}" />
+  <Task {task} {onDelete} {onToggle} />
 {/each}

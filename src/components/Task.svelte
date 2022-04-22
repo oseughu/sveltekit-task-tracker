@@ -7,12 +7,11 @@
 </script>
 
 <div
-  class="{`task ${task.reminder && 'reminder'}`}"
-  on:dblclick="{() => onToggle(task.id)}"
->
+  class={`task ${task.reminder && 'reminder'}`}
+  on:dblclick={() => onToggle(task.id)}>
   <h3>
     {task.text}{' '}
-    <div class="icon" on:click="{() => onDelete(task.id)}">
+    <div class="icon" on:click={() => onDelete(task.id)}>
       <MdClose />
     </div>
   </h3>

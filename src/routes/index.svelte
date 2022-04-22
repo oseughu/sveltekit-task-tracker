@@ -93,20 +93,16 @@
   <title>Task Tracker</title>
 </svelte:head>
 
-<Header onAdd="{() => (showAddTask = !showAddTask)}" showAdd="{showAddTask}" />
+<Header onAdd={() => (showAddTask = !showAddTask)} showAdd={showAddTask} />
 
 {#if showAddTask}
-  <AddTask onAdd="{addTask}" />
+  <AddTask onAdd={addTask} />
 {/if}
 
 {#if tasks.length === 0}
   <h3>No Tasks To Show.</h3>
 {:else}
   <div>
-    <Tasks
-      tasks="{tasks}"
-      onDelete="{deleteTask}"
-      onToggle="{toggleReminder}"
-    />
+    <Tasks {tasks} onDelete={deleteTask} onToggle={toggleReminder} />
   </div>
 {/if}
