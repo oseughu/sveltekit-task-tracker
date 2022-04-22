@@ -1,9 +1,9 @@
 <script context="module">
   export async function load() {
     try {
-      const tasksFromServer = await fetch('http://localhost:5000/tasks').then(
-        res => res.json()
-      )
+      const tasksFromServer = await fetch(
+        'https://my-json-server.typicode.com/oseughu/sveltekit-task-tracker/tasks'
+      ).then(res => res.json())
       return {
         props: { tasks: tasksFromServer }
       }
@@ -23,7 +23,9 @@
 
   // Fetch Task
   const fetchTask = async (id: number) => {
-    const res = await fetch(`http://localhost:5000/tasks/${id}`)
+    const res = await fetch(
+      `https://my-json-server.typicode.com/oseughu/sveltekit-task-tracker/tasks/${id}`
+    )
     const data = await res.json()
 
     return data
@@ -31,13 +33,16 @@
 
   // Add Task
   const addTask = async (task: any) => {
-    const res = await fetch('http://localhost:5000/tasks', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(task)
-    })
+    const res = await fetch(
+      'https://my-json-server.typicode.com/oseughu/sveltekit-task-tracker/tasks',
+      {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(task)
+      }
+    )
 
     const data = await res.json()
 
@@ -46,9 +51,12 @@
 
   // Delete Task
   const deleteTask = async (id: number) => {
-    await fetch(`http://localhost:5000/tasks/${id}`, {
-      method: 'DELETE'
-    })
+    await fetch(
+      `https://my-json-server.typicode.com/oseughu/sveltekit-task-tracker/tasks/${id}`,
+      {
+        method: 'DELETE'
+      }
+    )
 
     const newTasks = [...tasks]
 
@@ -62,13 +70,16 @@
     const taskToToggle = await fetchTask(id)
     const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder }
 
-    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(updTask)
-    })
+    const res = await fetch(
+      `https://my-json-server.typicode.com/oseughu/sveltekit-task-tracker/tasks/${id}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(updTask)
+      }
+    )
 
     const data = await res.json()
 
