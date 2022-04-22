@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { fade, scale } from 'svelte/transition'
+
   let text: string
   let day: string
   let reminder: boolean
@@ -19,7 +21,11 @@
   }
 </script>
 
-<form on:submit|preventDefault={handleSubmit} class="add-form">
+<form
+  on:submit|preventDefault={handleSubmit}
+  class="add-form"
+  in:scale
+  out:fade={{ duration: 300 }}>
   <div class="form-control">
     <label for="text">Task</label>
     <input type="text" placeholder="Add Task" bind:value={text} />
