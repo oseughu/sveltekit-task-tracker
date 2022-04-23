@@ -1,6 +1,6 @@
 <script lang="ts">
   import { v4 as uuidv4 } from 'uuid'
-  import { tasks } from '$src/stores/taskStore'
+  import { tasks } from '$stores/taskStore'
   import { scale } from 'svelte/transition'
 
   const id: any = uuidv4()

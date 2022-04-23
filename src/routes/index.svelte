@@ -2,7 +2,7 @@
   import Header from '$components/Header.svelte'
   import AddTask from '$components/AddTask.svelte'
   import Tasks from '$components/Tasks.svelte'
-  import { tasks } from '$src/stores/taskStore'
+  import { tasks } from '$stores/taskStore'
   import { fly, scale } from 'svelte/transition'
 
   let showAddTask: boolean = false

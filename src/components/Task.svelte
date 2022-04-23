@@ -1,6 +1,6 @@
 <script lang="ts">
   import { scale } from 'svelte/transition'
-  import { tasks } from '$src/stores/taskStore'
+  import { tasks } from '$stores/taskStore'
   import MdClose from 'svelte-icons/md/MdClose.svelte'
 
   export let task: any
