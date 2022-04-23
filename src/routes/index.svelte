@@ -3,7 +3,7 @@
   import AddTask from '$components/AddTask.svelte'
   import Tasks from '$components/Tasks.svelte'
   import { tasks } from '$src/stores/taskStore'
-  import { fly, fade } from 'svelte/transition'
+  import { fly, scale } from 'svelte/transition'
 
   let showAddTask: boolean = false
 </script>
@@ -12,7 +12,7 @@
   <title>Task Tracker</title>
 </svelte:head>
 
-<main in:fly={{ y: 200, duration: 2000 }} out:fade>
+<main in:fly={{ y: 200, duration: 2000 }} out:scale>
   <Header onAdd={() => (showAddTask = !showAddTask)} showAdd={showAddTask} />
 
   {#if showAddTask}

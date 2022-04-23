@@ -2,6 +2,7 @@
   import { onMount } from 'svelte'
   import '$src/app.css'
   import Footer from '$components/Footer.svelte'
+  import { fly, scale } from 'svelte/transition'
 
   let ready: boolean = false
 
@@ -9,7 +10,7 @@
 </script>
 
 {#if ready}
-  <div class="container">
+  <div in:fly={{ y: 200, duration: 2000 }} out:scale class="container">
     <slot />
     <Footer />
   </div>

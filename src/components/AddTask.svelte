@@ -1,7 +1,7 @@
 <script lang="ts">
   import { v4 as uuidv4 } from 'uuid'
   import { tasks } from '$src/stores/taskStore'
-  import { fade, fly } from 'svelte/transition'
+  import { scale } from 'svelte/transition'
 
   const id: any = uuidv4()
   let text: string
@@ -31,12 +31,7 @@
   }
 </script>
 
-<form
-  on:submit|preventDefault={handleSubmit}
-  class="add-form"
-  in:fly={{ y: 200, duration: 2000 }}
-  out:fade
->
+<form on:submit|preventDefault={handleSubmit} class="add-form" transition:scale>
   <div class="form-control">
     <label for="text">Task</label>
     <input type="text" placeholder="Add Task" bind:value={text} />
