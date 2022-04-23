@@ -6,10 +6,9 @@
   <title>About</title>
 </svelte:head>
 
-<div transition:fade>
-  <header class="header">
-    <h1>About</h1>
-  </header>
-  <h4>Version 1.1</h4>
-  <a href="/">Go Back</a>
-</div>
+<header class="header">
+  <h1>About</h1>
+</header>
+
+<h4>Version 1.1</h4>
+<a href="/">Go Back</a>
