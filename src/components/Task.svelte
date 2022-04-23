@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { fade, scale } from 'svelte/transition'
+  import { scale } from 'svelte/transition'
   import { tasks } from '$src/stores/taskStore'
   import MdClose from 'svelte-icons/md/MdClose.svelte'
 
@@ -25,10 +25,10 @@
 </script>
 
 <div
-  in:scale
-  out:fade={{ duration: 300 }}
+  transition:scale
   class={`task ${task.reminder && 'reminder'}`}
-  on:dblclick={() => handleToggle(task.id)}>
+  on:dblclick={() => handleToggle(task.id)}
+>
   <h3>
     {task.text}{' '}
     <div class="icon" on:click={() => handleDelete(task.id)}>
