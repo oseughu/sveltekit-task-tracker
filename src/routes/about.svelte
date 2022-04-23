@@ -1,12 +1,12 @@
 <script>
-  import { scale, fly } from 'svelte/transition'
+  import { fade } from 'svelte/transition'
 </script>
 
 <svelte:head>
   <title>About</title>
 </svelte:head>
 
-<div in:fly={{ y: 200, duration: 2000 }} out:scale>
+<div transition:fade>
   <header class="header">
     <h1>About</h1>
   </header>

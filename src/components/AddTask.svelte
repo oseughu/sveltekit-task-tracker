@@ -44,6 +44,5 @@
     <label for="reminder">Set Reminder</label>
     <input type="checkbox" bind:checked={reminder} />
   </div>
-
   <input type="submit" value="Save Task" class="btn btn-block" />
 </form>
