@@ -1,23 +1,33 @@
 <script lang="ts">
+  import { v4 as uuidv4 } from 'uuid'
+  import { tasks } from '$src/stores/taskStore'
   import { fade, scale } from 'svelte/transition'
 
+  const id: any = uuidv4()
   let text: string
   let day: string
   let reminder: boolean
 
-  export let onAdd: any
-
   const handleSubmit = () => {
-    if (!text) {
+    if (text) {
+      const newTask = {
+        id,
+        text,
+        day,
+        reminder
+      }
+
+      tasks.update(currentTasks => {
+        return [...currentTasks, newTask]
+      })
+
+      text = ''
+      day = ''
+      reminder = false
+    } else {
       alert('Please add a task')
       return
     }
-
-    onAdd({ text, day, reminder })
-
-    text = ''
-    day = ''
-    reminder = false
   }
 </script>
 
@@ -25,7 +35,8 @@
   on:submit|preventDefault={handleSubmit}
   class="add-form"
   in:scale
-  out:fade={{ duration: 300 }}>
+  out:fade
+>
   <div class="form-control">
     <label for="text">Task</label>
     <input type="text" placeholder="Add Task" bind:value={text} />

@@ -8,6 +8,7 @@
     "lib": ["es2020", "DOM"],
     "moduleResolution": "node",
     "module": "es2020",
+    "outDir": "./dist",
     "paths": {
       "$components": ["src/components"],
       "$components/*": ["src/components/*"],

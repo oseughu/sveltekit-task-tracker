@@ -1,17 +1,37 @@
 <script lang="ts">
+  import { fade, scale } from 'svelte/transition'
+  import { tasks } from '$src/stores/taskStore'
   import MdClose from 'svelte-icons/md/MdClose.svelte'
 
   export let task: any
-  export let onDelete: any
-  export let onToggle: any
+
+  const handleDelete = (id: any) => {
+    tasks.update(currentTasks => {
+      return currentTasks.filter(task => task.id !== id)
+    })
+  }
+
+  const handleToggle = (id: any) => {
+    tasks.update(currentTask => {
+      return currentTask.map(task => {
+        if (task.id === id) {
+          task.reminder = !task.reminder
+        }
+
+        return task
+      })
+    })
+  }
 </script>
 
 <div
+  in:scale
+  out:fade={{ duration: 300 }}
   class={`task ${task.reminder && 'reminder'}`}
-  on:dblclick={() => onToggle(task.id)}>
+  on:dblclick={() => handleToggle(task.id)}>
   <h3>
     {task.text}{' '}
-    <div class="icon" on:click={() => onDelete(task.id)}>
+    <div class="icon" on:click={() => handleDelete(task.id)}>
       <MdClose />
     </div>
   </h3>
