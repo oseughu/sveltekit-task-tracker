@@ -8,9 +8,16 @@
   let day: string
   let reminder: boolean
 
+  interface ITask {
+    id: any
+    text: string
+    day: string
+    reminder: boolean
+  }
+
   const handleSubmit = () => {
     if (text) {
-      const newTask = {
+      const newTask: ITask = {
         id,
         text,
         day,
