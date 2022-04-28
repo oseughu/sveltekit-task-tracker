@@ -4,9 +4,7 @@
   import { fade } from 'svelte/transition'
 
   const id: any = uuidv4()
-  let text: string
-  let day: string
-  let reminder: boolean
+  let text: string, day: string, reminder: boolean
 
   interface ITask {
     id: any

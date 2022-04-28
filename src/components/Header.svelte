@@ -1,8 +1,7 @@
 <script lang="ts">
   import Button from '$components/Button.svelte'
 
-  export let onAdd: any
-  export let showAdd: boolean
+  export let onAdd: any, showAdd: boolean
 </script>
 
 <header class="header">

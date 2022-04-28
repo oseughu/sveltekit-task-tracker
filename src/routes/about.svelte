@@ -1,7 +1,3 @@
-<script>
-  import { fade } from 'svelte/transition'
-</script>
-
 <svelte:head>
   <title>About</title>
 </svelte:head>
